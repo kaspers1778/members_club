@@ -47,7 +47,7 @@
             </td>
 
             <td>
-                <input type=”text” name="name">
+                <input type=”text” name="Name">
             </td>
         </tr>
         <tr>
@@ -56,39 +56,36 @@
             </td>
 
             <td>
-                <input type=”email” name="email">
+                <input type=”email” name="Email">
             </td>
         </tr>
         <tr>
             <td>
             </td>
             <td>
-                <button name="add">Add</button>
-                <button name="clear" id="btn">Clear</button>
+                <button formaction="/add">Add</button>
+                <button formaction="/clear">Clear</button>
             </td>
         </tr>
     </table>
 </form>
 <h2>Members</h2>
 <table id="members">
+
     <tr id="cell">
         <th id="cell">#</th>
         <th id="cell">Name</th>
         <th id="cell">Email</th>
         <th id="cell">Registration date</th>
     </tr>
-    <tr id="members">
-        <td id="cell">1</td>
-        <td id="cell">John Snow</td>
-        <td id="cell">j.snow@company.com</td>
-        <td id="cell">17.01.2020</td>
-    </tr>
-    <tr id="members">
-        <td id="cell">2</td>
-        <td id="cell">Petro Balachin</td>
-        <td id="cell">pet.balachin1778@gmail.com</td>
-        <td id="cell">15.07.2000</td>
-    </tr>
+    {{range .List}}
+        <tr id="members">
+            <td id="cell">{{ .Id }}</td>
+            <td id="cell">{{ .Name }}</td>
+            <td id="cell">{{ .Email }}</td>
+            <td id="cell">{{ .RegisterDate }}</td>
+        </tr>
+    {{end}}
 </table>
 </body>
 </html>
