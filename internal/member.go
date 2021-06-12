@@ -13,7 +13,7 @@ type Member struct {
 }
 
 func (m Member) Validate() (nameErr, emailErr error) {
-	isNameValid, _ := regexp.MatchString("[\\w\\.\\s]+", m.Name)
+	isNameValid, _ := regexp.MatchString("[a-zA-Z\\.\\s]+$", m.Name)
 	if !isNameValid {
 		nameErr = errors.New("Name should be valid")
 	}
