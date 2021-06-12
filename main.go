@@ -19,7 +19,7 @@ func main() {
 	http.HandleFunc("/add", makeAddHandler(&message, sl))
 	http.HandleFunc("/clear", makeClearHandler(&message, sl))
 
-	http.ListenAndServe(":8091", nil)
+	http.ListenAndServe(":3000", nil)
 }
 
 func makeSlashHandler(members *internal.Message) func(w http.ResponseWriter, r *http.Request) {
