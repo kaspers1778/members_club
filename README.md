@@ -8,7 +8,7 @@ To run application locally follow this steps:
 ```cd ./members_club```
 1. Run application by IDE or by next command:  
 ```go run main.go```    
-1. After build will appear line simular that  
+1. After build will appear line simular to that  
 ```Server has been started on :8000```  
 8000 - this is the port app running at, so the next step is to open in your browser link 
 ```http://localhost:8000/```  
