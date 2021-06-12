@@ -49,6 +49,9 @@
             <td>
                 <input type=”text” name="Name">
             </td>
+            {{with .Errors.Name}}
+                <td><font color="red">{{ . }}</font></td>
+            {{ end }}
         </tr>
         <tr>
             <td>
@@ -58,6 +61,9 @@
             <td>
                 <input type=”email” name="Email">
             </td>
+            {{with .Errors.Email}}
+                <td><font color="red">{{ . }}</font></td>
+            {{ end }}
         </tr>
         <tr>
             <td>
@@ -78,7 +84,7 @@
         <th id="cell">Email</th>
         <th id="cell">Registration date</th>
     </tr>
-    {{range .List}}
+    {{range .Members}}
         <tr id="members">
             <td id="cell">{{ .Id }}</td>
             <td id="cell">{{ .Name }}</td>
