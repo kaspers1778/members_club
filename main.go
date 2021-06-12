@@ -1,25 +1,31 @@
 package main
 
 import (
+	"fmt"
 	"html/template"
 	"members_club/internal"
 	"net/http"
+	"os"
 	"time"
 )
 
 func main() {
+	PORT := "8000"
+	if v, ok := os.LookupEnv("PORT"); ok {
+		PORT = v
+	}
 	message := internal.Message{
 		Members: []internal.Member{},
 		Errors:  map[string]string{},
 	}
 	var sl internal.ServerLogger
 	sl.New()
-	sl.Info("Server has been started...")
+	sl.Info(fmt.Sprintf("Server has been started on :%v ", PORT))
 	http.HandleFunc("/", makeSlashHandler(&message))
 	http.HandleFunc("/add", makeAddHandler(&message, sl))
 	http.HandleFunc("/clear", makeClearHandler(&message, sl))
 
-	http.ListenAndServe(":3000", nil)
+	http.ListenAndServe(":"+PORT, nil)
 }
 
 func makeSlashHandler(members *internal.Message) func(w http.ResponseWriter, r *http.Request) {
